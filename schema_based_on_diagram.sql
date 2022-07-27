@@ -18,7 +18,7 @@ CREATE TABLE medical_histories(
   patient_id INT,
   status VARCHAR(100),
   PRIMARY KEY(id),
-  FOREIGN KEY (patient_id) REFERENCES patients (id)
+  CONSTRAINT fkey_patients FOREIGN KEY (patient_id) REFERENCES patients (id)
 );
 
 -- Create treatments table
@@ -39,7 +39,7 @@ CREATE TABLE invoices(
   payed_at TIMESTAMP,
   medical_history_id INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (medical_history_id) REFERENCES medical_histories (id)
+  CONSTRAINT fkey_medical_history_invoices FOREIGN KEY (medical_history_id) REFERENCES medical_histories (id)
 );
 
 -- Create invoice items table
@@ -52,6 +52,6 @@ CREATE TABLE invoice_items(
   invoice_id INT,
   treatment_id INT,
   PRIMARY KEY (id),
-  FOREIGN KEY (invoice_id) REFERENCES invoices (id),
-  FOREIGN KEY (treatment_id) REFERENCES treatments (id)
+  CONSTRAINT fkey_invoices FOREIGN KEY (invoice_id) REFERENCES invoices (id),
+  CONSTRAINT fkey_treatments FOREIGN KEY (treatment_id) REFERENCES treatments (id)
 );
