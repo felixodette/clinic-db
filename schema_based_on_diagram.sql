@@ -29,3 +29,15 @@ CREATE TABLE treatments(
   name VARCHAR(50),
   PRIMARY KEY (id)
 );
+
+-- Create invoices table
+DROP TABLE IF EXISTS invoices;
+CREATE TABLE invoices(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  total_amount DECIMAL,
+  generated_at TIMESTAMP,
+  payed_at TIMESTAMP,
+  medical_history_id INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (medical_history_id) REFERENCES medical_histories (id)
+);
