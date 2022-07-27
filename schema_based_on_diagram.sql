@@ -41,3 +41,17 @@ CREATE TABLE invoices(
   PRIMARY KEY (id),
   FOREIGN KEY (medical_history_id) REFERENCES medical_histories (id)
 );
+
+-- Create invoice items table
+DROP TABLE IF EXISTS invoice_items;
+CREATE TABLE invoice_items(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  unit_price DECIMAL,
+  quantity INT,
+  total_price DECIMAL,
+  invoice_id INT,
+  treatment_id INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (invoice_id) REFERENCES invoices (id),
+  FOREIGN KEY (treatment_id) REFERENCES treatments (id)
+);
