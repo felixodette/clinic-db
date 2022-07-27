@@ -55,3 +55,12 @@ CREATE TABLE invoice_items(
   CONSTRAINT fkey_invoices FOREIGN KEY (invoice_id) REFERENCES invoices (id),
   CONSTRAINT fkey_treatments FOREIGN KEY (treatment_id) REFERENCES treatments (id)
 );
+
+-- Join table for treatment history
+DROP TABLE IF EXISTS treatment_history;
+CREATE TABLE treatment_history(
+  medical_id INT,
+  treatment_id INT,
+  CONSTRAINT fkey_medical FOREIGN KEY (medical_id) REFERENCES medical_histories(id),
+  CONSTRAINT fkey_treatment FOREIGN KEY (treatment_id) REFERENCES treatments(id)
+);
