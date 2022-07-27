@@ -20,3 +20,12 @@ CREATE TABLE medical_histories(
   PRIMARY KEY(id),
   FOREIGN KEY (patient_id) REFERENCES patients (id)
 );
+
+-- Create treatments table
+DROP TABLE IF EXISTS treatments;
+CREATE TABLE treatments(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  type VARCHAR(50),
+  name VARCHAR(50),
+  PRIMARY KEY (id)
+);
